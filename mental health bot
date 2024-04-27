@@ -1,0 +1,223 @@
+#an interactive chatting bot that is supposed to resemble therapy
+#it's supposed to resopnd to user's input and ask questions
+
+import random
+###########################################################
+#NOTES TO ADD STATEMENTS BOUNCING BACK TO USERS ON HOW GREAT OR BAD THEIR DAY WAS
+
+#IDEA TO DO THIS
+"""userInput = input("What are you feeling?")
+if userInput in emotions:
+    print(emotions[userInput]['response'])
+else:
+  print("Have a great day")"""
+
+###########################################################
+#VARIABLE ASSIGNMENT CODES DOWN BELOW
+
+#Random introductional greeting - Isaac list
+greetings = [
+    'Nice to meet you!', 'Wonderful to meet you!', 'Pleasure meeting you.',
+    'Delighted to make your acquaintance!'
+]
+
+#Emily Introduction list
+introduction = [
+    'How are you feeling today?', 'How was your day?',
+    'Tell me about your day', 'How are you doing today?',
+    'What did you do today?'
+]
+
+#add error/incorrect statement handeling EX: if someone puts banana instead of # code will fail
+#make it so code wont fail and they need to try again
+
+######################################################## This section i don't know if we're still cooking with this or not.
+"""#Lists of reassurance - Isaac
+listReassurance = [
+    'Hang in there!', 'You got this!', 'You are amazing!',
+    'Everything will be okay.'
+]"""
+"""#Lists of happy emotions - Isaac
+happyKeywords = [
+    'happy', 'great', 'good', 'well', 'fantastic', 'amazing', 'joyful',
+    'excited', 'cool', 'nice', 'lovely', 'wonderful', 'super', 'like', 'liked',
+    'enjoy', 'enjoyed', 'fun', 'funny', 'laugh', 'laughed', 'laughing'
+]"""
+"""#Rosella list of negative
+ListNegativeKeywords = [
+    "anxiety",
+    "stress",
+    "anxious",
+    "stressed",
+    "depressed",
+    "sad",
+    "sadness",
+    "tired",
+    "tiredness",
+    "sleep",
+]"""
+"""#Brooke Code - Encouragement
+encouragement = [
+    "You are doing awesome!",
+    "This is what you’re going through, not who you are.", "This will pass",
+    "I'm here to  listen."
+]"""
+##################################################################
+emotions = {
+    'sad': {
+        'response': 'I hope you feel better',
+    },
+    'happy': {
+        'response': 'I hope you keep it up',
+    },
+    'angry': {
+        'response': 'I hope you calm down',
+    },
+    'excited': {
+        'response': 'I hope you stay excited',
+    }
+}
+
+#emily & brooke's dictionary - Revised by Isaac for conciseness and diversity.
+list_continue = {
+    'Yes': {
+        'continue': [
+            "Okay, take your time.\n", "Tell me more.\n",
+            "The floor is yours.\n", "Go on, I'm listening.\n"
+        ]
+    },
+    'Yeah': {
+        'continue': [
+            "Okay, take your time.\n", "Tell me more.\n",
+            "The floor is yours.\n", "Go on, I'm listening.\n"
+        ]
+    }
+}
+list_continue1 = {
+    'No': {
+        'continue': [
+            "No worries! I'll be here if you need me.",
+            "That's okay, would you like other resources?",
+        ]
+    },
+    'Nope': {
+        'continue': [
+            "No worries! I'll be here if you need me.",
+            "That's okay, would you like other resources?",
+        ]
+    }
+}
+
+#Assigning Random choices to variables - Isaac, Emily, Brooke
+randomGreeting = random.choice(greetings)
+statement = random.choice(introduction)
+
+#WHERE THE INTERACTIVE CODE STARTS
+
+#Opening statement that prompts user to explain how they feel - Isaac
+"""
+The original code before the while statement was implemented - isaac 
+
+print("I am Doctor Python! What is your name?")
+userName = input("Please type your name here ").title()
+print("Hello " + userName + "! " + randomGreeting)
+"""
+
+print("I am doctor Python! What is your name?")
+userName = input("\nPlease type your name here: ").title()
+print("\nHello " + userName + "! Is this correct?")
+nameIsRight = input("\nPlease type Yes or No ").title()
+
+i = 0
+while i < 1:
+  if nameIsRight == 'Yes':
+    print("\nHello " + userName + "! " + randomGreeting + "\n")
+    i = 1
+  elif nameIsRight == 'No':
+    userName = input("\nThat's okay, please retype your name again here ")
+    nameIsRight = input("\nHello " + userName +
+                        ", Is this your name? ").title()
+  else:
+    nameIsRight = input("\nPlease type Yes or No ").title()
+
+#Rosellas mood rating
+print("Please answer the following questions to check your mental health:")
+mood_rating = int(
+    input("On a scale of 1 to 10, how would you rate your mood? "))
+if mood_rating <= 3:
+  need_resources = input(
+      "\nWould you like resources to help improve your mood? (yes/no) ").lower(
+      )
+  if need_resources == "yes":
+    print(
+        "\nPlease seek support from a friend, family member, or professional. You can also consider contacting a mental health hotline."
+    )
+  elif need_resources == "no":
+    print(
+        "\nIt's important to reach out for support if you need it. Take care of yourself."
+    )
+  else:
+    print("\nInvalid response. Please answer with 'yes' or 'no'.")
+elif 3 < mood_rating <= 7:
+  print(
+      "\nYou're doing okay, but it's important to keep an eye on your mental health. Make sure to practice self-care."
+  )
+else:
+  print(
+      "\nGreat to hear you're feeling good! Keep up the positive mindset and continue taking care of yourself."
+  )
+#add elifs maybe for answers with yes and nos?
+"""userInput = input("Would you like to talk about it? ").title()
+if any(i in userInput for i in list_continue) == True:
+  statement = random.choice(list_continue['Yes']['continue'])
+  userInput = input(statement)
+
+else:
+  print("Have a great day")"""
+
+#brooke elif statement - added input function and a while loop so users can interact - Isaac
+#emily random choice with dictionary
+#answer = input("\nWould you like to talk about it? (Yes/No): ").title()
+#i = 0
+#while i < 1:
+#if answer == "Yes":
+#input(random.choice(list_continue['Yes']['continue']))
+#i = 1)
+#elif answer == "No":
+#print(random.choice(list_continue1['No']['continue']))
+# i = 1
+#else:
+#answer = input("invalid, please type yes or no.").title()
+"""    newstatement = random.choice(list_continue['Yes']['continue']
+if newstatement in emotions == True:
+ print(emotions['sad']['response']) """
+"""
+    if "Yes" in answer:
+      input(random.choice(list_continue['Yes']['continue']))
+      i = 1
+    elif "No" in answer:
+      print(random.choice(list_continue1['No']['continue']))
+      i = 1
+"""
+#brooke code - scrapped
+#if any(i in userInput for i in ListNegativeKeywords) == True:
+#print("I am sorry to hear that, would you like words of encouragement?")
+
+#brooke test code
+#if any(i in userInput for i in ListNegativeKeywords) == True:
+#print("I'm sorry to hear that. Would you like some words of encouragement?")
+
+#we were working on user input testing - brooke
+
+#brooke test feature
+"""print("Im feeling happy")
+emotion = "happy"
+if emotion == "happy":
+  print("Great! Glad to hear it!")"""
+"""#isaac test code
+if any(i in userInput for i in happyKeywords) == True:
+  print("That's great! I'm glad you're feeling happy!")"""
+"""#emily test code
+userInput = input("How are you feeling today?")
+if any(i in userInput for i in emotions) == True:
+  print("I'm sorry to hear that, would you like some words of encouragement")"""
